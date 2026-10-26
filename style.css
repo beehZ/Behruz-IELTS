@@ -1,0 +1,332 @@
+/* ============ IELTS Daily — stilistikasi ============ */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #0f1117;
+  --panel: #1a1d27;
+  --panel2: #222633;
+  --text: #e8eaf2;
+  --muted: #9aa1b5;
+  --accent: #6c8cff;
+  --accent2: #3ddc97;
+  --danger: #ff5c6c;
+  --border: #2d3245;
+}
+
+body {
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  padding-bottom: 120px;
+}
+
+header {
+  padding: 18px 20px;
+  background: var(--panel);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+header h1 { font-size: 22px; }
+
+.clockbox { text-align: right; }
+#bigClock {
+  font-size: 30px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+}
+#dateLine { color: var(--muted); font-size: 13px; }
+#dayBadge {
+  display: inline-block;
+  margin-top: 4px;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  background: var(--panel2);
+  border: 1px solid var(--border);
+}
+
+main { max-width: 980px; margin: 0 auto; padding: 18px 14px; }
+
+.view { display: block; }
+.view[hidden] { display: none; }
+
+h2 { margin-bottom: 10px; font-size: 20px; }
+.muted { color: var(--muted); font-size: 14px; margin-bottom: 12px; line-height: 1.5; }
+
+.plan-body {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 14px;
+  margin-bottom: 14px;
+}
+
+.lesson-item {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  border-radius: 10px;
+  background: var(--panel2);
+  margin-bottom: 8px;
+}
+.lesson-item.done { opacity: 0.55; }
+.lesson-item .name { font-weight: 600; }
+.lesson-item .sub { color: var(--muted); font-size: 12px; }
+
+.btn {
+  border: none;
+  border-radius: 10px;
+  padding: 10px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  background: var(--panel2);
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+.btn.primary { background: var(--accent); color: #0b0d14; border: none; }
+.btn.secondary { background: var(--panel2); }
+.btn.tiny { padding: 6px 10px; font-size: 12px; }
+.btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+.row-btns { display: flex; gap: 10px; flex-wrap: wrap; margin: 12px 0; }
+
+/* ---- Video qulflash ---- */
+#playerWrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #000;
+  border-radius: 14px;
+  overflow: hidden;
+}
+#ytPlayer, #ytPlayer iframe { position: absolute; inset: 0; width: 100%; height: 100%; }
+#videoLock {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 30%;           /* pastki panel + progress bar yopiladi */
+  z-index: 5;
+  background: transparent;
+  cursor: not-allowed;
+}
+.lesson-title { font-weight: 700; font-size: 16px; }
+.lesson-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+.lesson-msg { margin: 10px 0; color: var(--accent2); font-weight: 600; min-height: 20px; }
+
+/* ---- Tanafus ---- */
+.break-video { margin: 10px 0; }
+.break-video iframe {
+  width: 100%;
+  max-width: 560px;
+  aspect-ratio: 16/9;
+  border: none;
+  border-radius: 12px;
+  display: block;
+}
+
+/* ---- Burchak timeri ---- */
+#cornerTimer {
+  position: fixed;
+  right: 14px;
+  bottom: 14px;
+  z-index: 999;
+  background: linear-gradient(135deg, #6c8cff, #3ddc97);
+  color: #0b0d14;
+  border-radius: 16px;
+  padding: 10px 16px;
+  text-align: center;
+  box-shadow: 0 6px 20px rgba(0,0,0,.45);
+  user-select: none;
+}
+#ctLabel { font-size: 11px; font-weight: 700; letter-spacing: 1px; }
+#ctTime {
+  font-size: 26px;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+}
+#cornerTimer.break { background: linear-gradient(135deg, #ffb35c, #ff6c6c); }
+#cornerTimer[hidden] { display: none; }
+@media (max-width: 480px) {
+  #cornerTimer { padding: 8px 12px; }
+  #ctTime { font-size: 20px; }
+}
+
+/* ---- Lug'at ---- */
+#vocabList, #testZones, #testPanel {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 12px;
+  margin-bottom: 14px;
+}
+
+.vocab-row {
+  display: grid;
+  grid-template-columns: 42px 1fr 1fr;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 6px;
+}
+.vocab-row .num {
+  text-align: center;
+  font-weight: 700;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+.vocab-row input {
+  width: 100%;
+  background: var(--panel2);
+  border: 1px solid var(--border);
+  color: var(--text);
+  border-radius: 8px;
+  padding: 9px 10px;
+  font-size: 15px;
+}
+.vocab-row input:focus { outline: 2px solid var(--accent); border-color: transparent; }
+
+.vocab-row.hidden-word { filter: blur(6px); pointer-events: none; opacity: .5; }
+
+.test-zone {
+  margin: 14px 0 4px;
+  padding: 10px;
+  border-top: 1px dashed var(--border);
+}
+.test-zone .zone-title { font-size: 12px; color: var(--muted); margin-bottom: 8px; }
+.test-btns { display: flex; flex-wrap: wrap; gap: 8px; }
+
+.test-btn {
+  border: none;
+  border-radius: 10px;
+  padding: 8px 14px;
+  font-weight: 700;
+  font-size: 13px;
+  cursor: pointer;
+  color: #10121a;
+}
+.test-btn[data-c="1"] { background: #ff6c6c; }
+.test-btn[data-c="2"] { background: #ffb35c; }
+.test-btn[data-c="3"] { background: #3ddc97; }
+.test-btn[data-c="4"] { background: #6c8cff; }
+.test-btn[data-c="5"] { background: #d47cff; color: #fff; }
+
+.test-q { margin: 10px 0; }
+.test-q .q-label { font-size: 12px; color: var(--muted); margin-bottom: 4px; }
+.test-q input { width: 100%; background: var(--panel2); border: 1px solid var(--border); color: var(--text); border-radius: 8px; padding: 8px 10px; font-size: 14px; }
+.test-q input.ok { border-color: var(--accent2); }
+.test-q input.bad { border-color: var(--danger); }
+.test-q .answer { font-size: 12px; color: var(--muted); margin-top: 3px; }
+.test-score { font-weight: 700; margin: 10px 0; }
+.test-res-badge { font-size: 11px; margin-left: 6px; color: #10121a; }
+
+/* ---- Doimiy lug'at shortcut (timer tepasida) ---- */
+#vocabShortcut {
+  position: fixed;
+  right: 14px;
+  bottom: 96px;
+  z-index: 998;
+  border: none;
+  border-radius: 14px;
+  padding: 10px 16px;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+  background: #d47cff;
+  color: #fff;
+  box-shadow: 0 6px 20px rgba(0,0,0,.4);
+}
+#vocabShortcut[hidden] { display: none; }
+@media (max-width: 480px) {
+  #vocabShortcut { bottom: 84px; padding: 8px 12px; }
+}
+
+/* ---- Target video ---- */
+.target-video { margin: 10px 0; }
+.target-video iframe {
+  width: 100%;
+  max-width: 800px;
+  aspect-ratio: 16/9;
+  border: none;
+  border-radius: 12px;
+  display: block;
+}
+
+/* ---- Daftar (haqiqiy daftar o'xshash, 2 sahifa) ---- */
+#notebookWrap {
+  background: #101218;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 16px;
+  margin-bottom: 14px;
+}
+.nb-spread {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.nb-page {
+  position: relative;
+  background: linear-gradient(180deg, #fdf6e3, #f7eed7);
+}
+.nb-left {
+  border-radius: 8px 0 0 8px;
+  box-shadow: inset -8px 0 12px rgba(0,0,0,.10);
+  border-right: 2px solid #937b58;
+}
+.nb-right {
+  border-radius: 0 8px 8px 0;
+  box-shadow: inset 8px 0 12px rgba(0,0,0,.10);
+}
+.nb-text {
+  width: 100%;
+  height: 440px;
+  resize: none;
+  border: none;
+  outline: none;
+  display: block;
+  background:
+    repeating-linear-gradient(transparent 0 27px, #cfd6c4 27px 28px);
+  font: 16px/28px "Segoe UI", Arial, sans-serif;
+  color: #2b2b2b;
+  padding: 6px 16px;
+}
+.nb-num {
+  position: absolute;
+  bottom: 10px;
+  font-size: 12px;
+  color: #8a7a5d;
+  user-select: none;
+}
+.nb-left .nb-num { left: 16px; }
+.nb-right .nb-num { right: 16px; }
+@media (max-width: 700px) {
+  .nb-spread { grid-template-columns: 1fr; }
+  .nb-page { border-radius: 8px; }
+  .nb-text { height: 320px; }
+}
+
+/* ---- Qayta ko'rish ---- */
+#rewatchPlayerBox { margin-bottom: 14px; }
+#rewatchPlayer { border-radius: 12px; }
+.watchgroup { margin-bottom: 16px; }
+.watchgroup h3 { font-size: 15px; margin-bottom: 6px; color: var(--accent); }
+.watchitem {
+  display: flex; justify-content: space-between; align-items: center;
+  gap: 8px; padding: 8px 10px; background: var(--panel2);
+  border-radius: 8px; margin-bottom: 6px; font-size: 13px;
+}

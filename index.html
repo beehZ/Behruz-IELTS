@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IELTS Daily — Mening o'qish jadvalim</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>🎓 IELTS Daily</h1>
+    <div class="clockbox">
+      <div id="bigClock">--:--:--</div>
+      <div id="dateLine">Yuklanmoqda...</div>
+      <div id="dayBadge"></div>
+    </div>
+  </header>
+
+  <main>
+    <!-- PLAN VIEW -->
+    <section id="view-plan" class="view">
+      <h2>📅 Bugungi reja</h2>
+      <div id="planBody" class="plan-body"></div>
+      <div class="row-btns">
+        <button id="btnVocab" class="btn secondary">📖 Lug'atni ochish</button>
+        <button id="btnRewatch" class="btn secondary">🔁 Qayta ko'rish</button>
+      </div>
+      <div id="watchedBox"></div>
+    </section>
+
+    <!-- DARS VIEW -->
+    <section id="view-lesson" class="view" hidden>
+      <div class="lesson-head">
+        <div id="lessonTitle" class="lesson-title"></div>
+        <button id="btnBackPlan" class="btn tiny secondary">⬅ Rejaga qaytish</button>
+      </div>
+      <div id="playerWrap">
+        <div id="ytPlayer"></div>
+        <div id="videoLock" title="Video nazorat ostida"></div>
+      </div>
+      <div id="lessonMsg" class="lesson-msg"></div>
+      <div class="row-btns">
+        <button id="btnSwitchNext" class="btn primary" hidden>Keyingi video ➡</button>
+      </div>
+    </section>
+
+    <!-- TANAFUS VIEW -->
+    <section id="view-break" class="view" hidden>
+      <h2>☕ Tanafus — 5 daqiqa</h2>
+      <p class="muted">Telefonni qo'y, mashqlarni bajar! Bu vaqtda charchaqani chiqaradigan video:</p>
+      <div id="breakVideoBox" class="break-video"></div>
+      <div class="row-btns">
+        <button id="btnBreakDone" class="btn primary" hidden>✅ Tanafus tugadi — davom etish</button>
+      </div>
+    </section>
+
+    <!-- LUG'AT VIEW -->
+    <section id="view-vocab" class="view" hidden>
+      <div class="lesson-head">
+        <h2>📖 Lug'at yodlash</h2>
+        <div class="row-btns" style="margin:0">
+          <button id="btnVocabDone" class="btn tiny primary">✅ Lug'atni tugatish → Target 🎯</button>
+          <button id="btnBackPlan2" class="btn tiny secondary">⬅ Orqaga</button>
+        </div>
+      </div>
+      <p class="muted">
+        So'z yoz ➟ <b>Tab</b> (yoki telefonda <b>Space 2 marta</b>) ➟ narigi ustunga o'tasan,
+        tarjimasini yozasan. <b>Enter</b> (yoki ✳️ keyingi qator) ➟ yangi raqamli qator.
+        Har 20 ta qatordan keyin 5 xil rangli test chiqadi.
+      </p>
+      <div id="vocabList"></div>
+      <div class="row-btns">
+        <button id="btnAddRow" class="btn secondary">➕ Yangi qator</button>
+      </div>
+      <div id="testZones"></div>
+      <div id="testPanel" hidden></div>
+    </section>
+
+    <!-- TARGET VIEW -->
+    <section id="view-target" class="view" hidden>
+      <div class="lesson-head">
+        <h2>🎯 Target</h2>
+        <button id="btnBackPlan4" class="btn tiny secondary">⬅ Orqaga</button>
+      </div>
+      <p class="muted">Har listening kuni 1 ta target video. Bu videoda <b>pauza, resume, vaqt surish bemalol mumkin</b> — yozib, eshitib o'rganasan.</p>
+      <div id="targetVideoBox" class="target-video"></div>
+      <div class="row-btns">
+        <button id="btnTargetDone" class="btn primary">✅ Bugungi target ko'rildi</button>
+      </div>
+      <div id="targetMsg" class="lesson-msg"></div>
+      <h3 style="margin:14px 0 8px">📓 Daftar — target eshitganlaringni sho raqamlari bilan yozing</h3>
+      <div id="notebookWrap">
+        <div id="notebook"></div>
+        <div class="row-btns">
+          <button id="btnNotePrev" class="btn tiny secondary">⬅ Oldingi bet</button>
+          <div id="notePageNum" class="muted" style="line-height:34px"></div>
+          <button id="btnNoteNext" class="btn tiny secondary">Yangi bet ➡</button>
+        </div>
+        <p class="muted" style="margin-top:6px">Bet oxiriga yetib Enter bosang, daftar o'zi keyingi betga o'tadi.</p>
+      </div>
+    </section>
+
+    <!-- QAYTA KO'RISH VIEW -->
+    <section id="view-rewatch" class="view" hidden>
+      <div class="lesson-head">
+        <h2>🔁 Ko'rilgan videolarni qayta ko'rish</h2>
+        <button id="btnBackPlan3" class="btn tiny secondary">⬅ Orqaga</button>
+      </div>
+      <p class="muted">Bu yerda vaqtni bemalol oldinga/orqaga surishing, pauza qilishing mumkin.</p>
+      <div id="rewatchPlayerBox" hidden>
+        <iframe id="rewatchPlayer" width="100%" height="315" src="" title="Qayta ko'rish"
+          frameborder="0" allow="autoplay; encrypted-media; picture-in-picture"
+          allowfullscreen></iframe>
+      </div>
+      <div id="rewatchList"></div>
+    </section>
+  </main>
+
+  <!-- DOIMIY LUG'AT SHORTCUT (timer to'g'risida, har qanday joy) -->
+  <button id="vocabShortcut" title="Lug'atni ochish">📖</button>
+
+  <!-- DOIMIY BURCHAK TIMERI -->
+  <div id="cornerTimer" hidden>
+    <div id="ctLabel">DARS</div>
+    <div id="ctTime">25:00</div>
+  </div>
+
+  <script src="https://www.youtube.com/iframe_api"></script>
+  <script src="videos.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

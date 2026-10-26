@@ -1,0 +1,30 @@
+DIELS HAFTA JADVALI (bu faylni o'zingizga moslab to'ldirasiz)
+=============================================================
+Qoidalar:
+ * Har bir kun qavs ichida yoziladi: masalan [dushanba]
+ * Har bir dars yangi qatorda: VAQT - DARS NOMI
+ * Dars nomidan keyin qavs ichida video link yozsangiz, site shu videoni darsda ochadi:
+     08:00 - Grammatika darsi (https://youtu.be/XXXXXXXXXXX)
+ * Link bo'lmasa oddiy matn dars sifatida chiqadi.
+ * Fayl GitHub Pages ga yuklanganda o'qiladi. Faylni o'zgartirsangiz,
+   browserda Ctrl+F5 bosing.
+ * Dushanba/Chorshanba/Juma/Yakshanba ertalab, darslardan keyin
+   Reading bo'limi ochiladi (keyinroq qo'shilib turadi).
+=============================================================
+
+[dushanba]
+08:00 - Dars 1 nomi
+09:00 - Dars 2 nomi
+10:00 - Dars 3 nomi
+
+[chorshanba]
+08:00 - Dars 1 nomi
+09:00 - Dars 2 nomi
+
+[juma]
+08:00 - Dars 1 nomi
+09:00 - Dars 2 nomi
+
+[yakshanba]
+08:00 - Dars 1 nomi
+09:00 - Dars 2 nomi
